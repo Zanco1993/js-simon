@@ -16,15 +16,35 @@ function randomNumber(min, max) {
 
 // generiamo i 5 numeri casuali e gli inseriamo nella lista "listNumber"
 
+const numberHtml = document.getElementById("container-number");
+
+
 const listNumber = [];
 
 while(listNumber.length < 5){
     let randomNum = randomNumber(1, 20);
     if(!listNumber.includes(randomNum)){
         listNumber.push(randomNum);
-    }
 }
-console.log(listNumber)
+}
+
+// numberHtml.innerHTML = `<div class="box">${listNumber}</div>`;
+numberHtml.innerHTML = listNumber;
+
+// aggiunta la funzione di scomparsa dei numeri dopo 30 secondi
+setTimeout(function(){
+    numberHtml.classList.add("hide");
+
+}, 30000);
+
+
+
+
+
+
+
+
+
 
 // const numScritti = []
 
