@@ -44,15 +44,17 @@ setTimeout (function() {
     let listNumberUser = [];
     while(listNumberUser.length < 5) {
         let userNumber = parseInt(prompt("Inserisci i numeri che hai visto: "))
-        listNumberUser.push(userNumber);
-    
+        if (!listNumberUser.includes(userNumber)) {
+            listNumberUser.push(userNumber);
+            if (listNumberMachine.includes(userNumber)) {
+                listNumberCorrect.push(userNumber);
+                numberCorrect++;
+        
+            } 
+            
+        }
         //una volta aggiunto il numero in lista, verifico che si incluso
         // nella lista generata inizialmente dalla macchina
-    if (listNumberMachine.includes(userNumber) && userNumber !== listNumberCorrect) {
-        listNumberCorrect.push(userNumber);
-        numberCorrect++;
-
-    } 
 
     // faccio un confronto ogni giro, se è incluso,
     // aggiungo alla lista numberCorrect e incremento di 1
