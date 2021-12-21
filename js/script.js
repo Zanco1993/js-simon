@@ -18,7 +18,6 @@ function randomNumber(min, max) {
 
 const numberHtml = document.getElementById("container-number");
 
-
 const listNumber = [];
 
 while(listNumber.length < 5){
@@ -28,14 +27,24 @@ while(listNumber.length < 5){
 }
 }
 
-// numberHtml.innerHTML = `<div class="box">${listNumber}</div>`;
-numberHtml.innerHTML = listNumber;
+numberHtml.innerHTML = `<div class="box">${listNumber}</div>`;
+
+// numberHtml.innerHTML = listNumber;
 
 // aggiunta la funzione di scomparsa dei numeri dopo 30 secondi
+// nel container-number
 setTimeout(function(){
     numberHtml.classList.add("hide");
+}, 5000);
 
-}, 30000);
+const numScritti = []
+
+setTimeout (function() {
+    for(let i = 0;i < 5; i++) {
+        const userNumber = parseInt(prompt("Inserisci i numeri che hai visto: "))
+        numScritti.push(userNumber);
+    }
+}, 5100);
 
 
 
@@ -45,15 +54,6 @@ setTimeout(function(){
 
 
 
-
-// const numScritti = []
-
-// setTimeout (function() {
-//     for(let i = 0;i < 5; i++) {
-//         const userNumber = parseInt(prompt("Inserisci i numeri che hai visto: "))
-//         numScritti.push(userNumber);
-//     }
-// }, 5000);
 
 
 
