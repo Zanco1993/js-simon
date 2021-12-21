@@ -18,18 +18,16 @@ function randomNumber(min, max) {
 
 const numberHtml = document.getElementById("container-number");
 
-const listNumber = [];
+const listNumberMachine = [];
 
-while(listNumber.length < 5){
+while(listNumberMachine.length < 5){
     let randomNum = randomNumber(1, 20);
-    if(!listNumber.includes(randomNum)){
-        listNumber.push(randomNum);
+    if(!listNumberMachine.includes(randomNum)){
+        listNumberMachine.push(randomNum);
 }
 }
 
-numberHtml.innerHTML = `<div class="box">${listNumber}</div>`;
-
-// numberHtml.innerHTML = listNumber;
+numberHtml.innerHTML = `<div class="box">${listNumberMachine}</div>`;
 
 // aggiunta la funzione di scomparsa dei numeri dopo 30 secondi
 // nel container-number
@@ -37,14 +35,38 @@ setTimeout(function(){
     numberHtml.classList.add("hide");
 }, 5000);
 
-const numScritti = []
+
+let listNumberCorrect = [];
+let numberCorrect = 0;
 
 setTimeout (function() {
-    for(let i = 0;i < 5; i++) {
-        const userNumber = parseInt(prompt("Inserisci i numeri che hai visto: "))
-        numScritti.push(userNumber);
-    }
+    // creo una lista che mi tenga conto del numero degli elementi
+    let listNumberUser = [];
+    while(listNumberUser.length < 5) {
+        let userNumber = parseInt(prompt("Inserisci i numeri che hai visto: "))
+        listNumberUser.push(userNumber);
+    
+        //una volta aggiunto il numero in lista, verifico che si incluso
+        // nella lista generata inizialmente dalla macchina
+    if (listNumberMachine.includes(userNumber) && userNumber !== listNumberCorrect) {
+        listNumberCorrect.push(userNumber);
+        numberCorrect++;
+
+    } 
+
+    // faccio un confronto ogni giro, se è incluso,
+    // aggiungo alla lista numberCorrect e incremento di 1
+
+    console.log(`Hai indovinato questi numeri ${listNumberCorrect}`);
+    console.log(`Hai indovinato ${numberCorrect} numeri!!`)
+}
+
+
 }, 5100);
+
+
+
+
 
 
 
